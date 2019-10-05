@@ -8,8 +8,8 @@ class PlayerTest(unittest.TestCase):
         self.player = Player()
 
     def test_(self):
-        self.player.betRequest(dict(
-            current_buy_in=0,
+        result = self.player.betRequest(dict(
+            current_buy_in=250,
             minimum_raise=1,
             in_action=0,
             players=[
@@ -18,10 +18,12 @@ class PlayerTest(unittest.TestCase):
                         dict(rank='A', suit='hearts'),
                         dict(rank='K', suit='hearts'),
                     ],
-                    bet=1,
-                    stack=1,
+                    bet=250,
+                    stack=1000,
                 )
             ],
             community_cards=[],
         ))
+
+        print result
 
