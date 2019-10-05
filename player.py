@@ -1,3 +1,4 @@
+import json
 
 class Player:
     VERSION = "Much better all in bot"
@@ -12,8 +13,12 @@ class Player:
         minimum_raise = game_state['minimum_raise']
 
         if hole_cards[0]['rank'] == hole_cards[1]['rank']:
+            print("ALL IN: ", json.dumps(hole_cards))
             # Pair
             return 1000
+
+        if current_buy_in > 200:
+            return 0
 
         return current_buy_in - bet
 
