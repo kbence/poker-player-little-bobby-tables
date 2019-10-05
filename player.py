@@ -16,16 +16,25 @@ class Player:
         current_buy_in = game.current_buy_in
         minimum_raise = game.minimum_raise
 
-        if hole_cards[0].rank == hole_cards[1].rank:
+        print("Python version:", sys.version)
+        player = game_state['players'][game_state['in_action']]
+        hole_cards = player['hole_cards']
+        community_cards = game_state['community_cards']
+        bet = player['bet']
+        stack = player['stack']
+        current_buy_in = game_state['current_buy_in']
+        minimum_raise = game_state['minimum_raise']
+
+        if hole_cards[0]['rank'] == hole_cards[1]['rank']:
             if hole_cards[0].rank_value > 7:
-                print("ALL IN:", json.dumps(hole_cards.__dict__))
+                print("ALL IN:", json.dumps(hole_cards))
                 return 1000
             else:
-                print("Don't go ALL IN:", json.dumps(hole_cards.__dict__))
+                print("Don't go ALL IN:", json.dumps(hole_cards))
 
-        if hole_cards[0].rank_value > 9 or hole_cards[1].rank_value > 9:
-            print("response:", current_buy_in - bet)
-            return current_buy_in - bet
+        # if hole_cards[0].rank_value > 9 or hole_cards[1].rank_value > 9:
+        #     print("response:", current_buy_in - bet)
+        #     return current_buy_in - bet
 
         if current_buy_in > 200:
             return 0
