@@ -1,8 +1,6 @@
-from enum import Enum
-
 from Card import orderCardsByRank
 
-class HandRank(Enum):
+class HandRank:
     HIGHCARD = 1
     PAIR = 2
     TWO_PAIR = 3
@@ -21,7 +19,7 @@ def GetHandRank(CardList):
         Ranks.append(0)
     for card in CardList:
         Ranks[card.Rank-2] += 1
-    if len(Cardlist) >= 5: # check for straight
+    if len(CardList) >= 5: # check for straight
         con = 0 # continous cards amount
         lastRank = 0
         for i in range(2,15):
@@ -29,7 +27,7 @@ def GetHandRank(CardList):
                 lastRank = i
                 con = 1
             elif lastRank+1 == i:
-                lastrank += 1
+                lastRank += 1
                 con += 1
             else:
                 con = 0
