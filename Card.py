@@ -24,9 +24,9 @@ class Rank(Enum):
 
 
 class Card:
-	suit
-	rank
-	def __init__ ():
+	suit = None
+	rank = None
+	def __init__ (self):
 		return
 
 def getCardFromJson (JsonObj):

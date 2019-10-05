@@ -1,5 +1,7 @@
 
 RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q", "A"]
+SUITS = dict(spades=u"\u2660", hearts=u"\u2665", clubs=u"\u2663", diamonds=u"\u2666")
+
 
 class Player:
     def __init__(self, player):
@@ -34,6 +36,9 @@ class Card:
     def suit(self):
         return self._card['suit']
 
+    def __repr__(self):
+        return u'[{}{}]'.format(self.rank, SUITS[self.suit]).encode('utf-8')
+
 
 class GameState:
     def __init__(self, game_state):
@@ -41,15 +46,15 @@ class GameState:
 
     @property
     def current_buy_in(self):
-        return self._player['current_buy_in']
+        return self._game_state['current_buy_in']
 
     @property
     def minimum_raise(self):
-        return self._player['minimum_raise']
+        return self._game_state['minimum_raise']
 
     @property
     def our_player(self):
-        return self._game_state['players'][self._game_state['in_action']]
+        return Player(self._game_state['players'][self._game_state['in_action']])
 
     @property
     def community_cards(self):
