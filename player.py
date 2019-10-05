@@ -16,7 +16,7 @@ class Player:
         community_cards = game.community_cards
         bet = player.bet
         stack = player.stack
-        current_buy_in = game.community_cards
+        current_buy_in = game.current_buy_in
         minimum_raise = game.minimum_raise
 
         if hole_cards[0]['rank'] == hole_cards[1]['rank']:
