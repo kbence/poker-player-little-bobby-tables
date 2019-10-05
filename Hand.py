@@ -40,4 +40,5 @@ def GetHandRank(CardList):
 
 class Hand:
 	cards = []
-	#def best 
+
+	

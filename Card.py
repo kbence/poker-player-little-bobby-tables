@@ -1,10 +1,10 @@
 from enum import Enum
 
 class Suits(Enum):
-	spade = 1
-	heart = 2
-	diamond = 3
-	club = 4
+	SPADE = 1
+	HEART = 2
+	DIAMOND = 3
+	CLUB = 4
 
 class Rank(Enum):
 	TWO = 2
@@ -21,9 +21,39 @@ class Rank(Enum):
 	KING = 13
 	ACE = 14
 
+
+
 class Card:
-	Suits
-	Rank
+	suit
+	rank
+	def __init__ ():
+		return
+
+def getCardFromJson (JsonObj):
+	x = Card()
+	jsuit = JsonObj["suit"]
+	if (jsuit == "spades"):
+		x.suit = Suits.SPADE
+	if (jsuit == "hearts"):
+		x.suit = Suits.HEART
+	if (jsuit == "diamonds"):
+		x.suit = Suits.DIAMOND
+	if (jsuit == "clubs"):
+		x.suit = Suits.CLUB
+	jrank = JsonObj["rank"]
+	if ( jrank == "A" ):
+		x.rank = Rank.ACE
+	elif ( jrank == "K" ):
+		x.rank = Rank.KING
+	elif ( jrank == "Q" ):
+		x.rank = Rank.QUEEN
+	elif ( jrank == "J" ):
+		x.rank = Rank.JACK
+	else:
+		x.rank = Rank(int(jrank))
+	return x
+
+
 
 def orderCardsByRank (x, y):
 	return x.Rank > y.Rank
