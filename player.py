@@ -2,6 +2,7 @@ import json
 
 from game import GameState
 from logger import Logger
+from preflop import Preflop
 
 RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q", "A"]
 
@@ -19,6 +20,23 @@ class Player:
         stack = player.stack
         current_buy_in = game.current_buy_in
         minimum_raise = game.minimum_raise
+
+        try:
+            score = Preflop(game_state).score()
+
+            if score > 10:
+                logger.all_in("Chen said it's fine")
+                return 4000
+
+            if score < 6:
+                logger.all_in("Chen score is low")
+                return 0
+
+            logger.check("Chen says we should check")
+            return current_buy_in - bet
+        except:
+            print('WTF?')
+            pass
 
         if hole_cards[0].rank == hole_cards[1].rank:
             if hole_cards[0].rank_value > 7:
