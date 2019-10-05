@@ -20,10 +20,10 @@ class Preflop:
         return c2
 
     def name(self):
-        c1=self.hole_cards[0];
-        cr1= card_rank(c1);
+        c1=self.hole_cards[0]
+        cr1= card_rank(c1)
         c2 = self.hole_cards[1]
-        cr2=card_rank(c2);
+        cr2=card_rank(c2)
         if cr1 == cr2:
             return 'Pair of {rank}'.format(rank=self.hole_cards[0]['rank'])
 
