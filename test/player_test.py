@@ -25,5 +25,5 @@ class PlayerTest(unittest.TestCase):
             community_cards=[],
         ))
 
-        print result
+        self.assertEqual(1, 2)
 
