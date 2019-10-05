@@ -1,6 +1,6 @@
 
 class Player:
-    VERSION = "Default Python folding player"
+    VERSION = "Much better all in bot"
 
     def betRequest(self, game_state):
         player = game_state['players'][game_state['in_action']]
