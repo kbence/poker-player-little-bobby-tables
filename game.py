@@ -1,4 +1,6 @@
 
+RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q", "A"]
+
 class Player:
     def __init__(self, player):
         self._player = player
@@ -13,7 +15,24 @@ class Player:
 
     @property
     def hole_cards(self):
-        return self._player['hole_cards']
+        return [Card(card) for card in self._player['hole_cards']]
+
+
+class Card:
+    def __init__(self, card):
+        self._card = card
+
+    @property
+    def rank(self):
+        return self._card['rank']
+
+    @property
+    def rank_value(self):
+        return 14 - RANKS[-1::-1].index(self.rank)
+
+    @property
+    def suit(self):
+        return self._card['suit']
 
 
 class GameState:
@@ -34,5 +53,5 @@ class GameState:
 
     @property
     def community_cards(self):
-        return self._game_state['community_cards']
+        return [Card(card) for card in self._game_state['community_cards']]
 
