@@ -83,3 +83,11 @@ class I_can_has_unittest(unittest.TestCase):
 
     def test_high_value_2(self):
         self.assertEqual(1, Preflop(self.mock_hole(["2D", "2D"])).high_card_value())
+
+    #############################
+
+    def test_score_5_4(self):
+        self.assertEqual(2.5, Preflop(self.mock_hole(["5D", "4H"])).score())
+
+    def test_score_pair_5(self):
+        self.assertEqual(5, Preflop(self.mock_hole(["5D", "5H"])).score())

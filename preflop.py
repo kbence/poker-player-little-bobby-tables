@@ -19,12 +19,19 @@ class Preflop:
             return c1
         return c2
 
+    def is_pair(self):
+        c1=self.hole_cards[0]
+        cr1= card_rank(c1)
+        c2 = self.hole_cards[1]
+        cr2=card_rank(c2)
+        return cr1 == cr2
+
     def name(self):
         c1=self.hole_cards[0]
         cr1= card_rank(c1)
         c2 = self.hole_cards[1]
         cr2=card_rank(c2)
-        if cr1 == cr2:
+        if self.is_pair():
             return 'Pair of {rank}'.format(rank=self.hole_cards[0]['rank'])
 
         if cr2>cr1:
@@ -38,3 +45,6 @@ class Preflop:
     def high_card_value(self):
         r = card_rank(self.high_card())
         return self.high_card_values[r]
+
+    def score(self):
+        return self.high_card_value() * (2 if self.is_pair() else 1)
