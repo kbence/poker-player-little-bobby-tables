@@ -1,6 +1,3 @@
-from aetypes import Enum
-
-
 class Suits:
     SPADE = 1
     HEART = 2
