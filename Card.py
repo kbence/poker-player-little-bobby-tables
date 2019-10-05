@@ -1,12 +1,14 @@
-from enum import Enum
+from aetypes import Enum
 
-class Suits(Enum):
+
+class Suits:
     SPADE = 1
     HEART = 2
     DIAMOND = 3
     CLUB = 4
 
-class Rank(Enum):
+
+class Rank:
     TWO = 2
     THREE = 3
     FOUR = 4
@@ -24,12 +26,13 @@ class Rank(Enum):
 
 
 class Card:
-    def __init__ (osuit, orank):
+    def __init__ (self, osuit, orank):
         self.suit = osuit
         self.rank = orank
-    def __init__ ( other_card ):
-        self.suit = other.suit
-        self.rank = other.rank
+
+    def __init__ (self, other_card):
+        self.suit = other_card.suit
+        self.rank = other_card.rank
 
 def getCardFromJson (JsonObj):
     x = Card()
