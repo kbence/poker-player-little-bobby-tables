@@ -1,6 +1,8 @@
 import json
 import sys
 
+from game import GameState
+
 RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q", "A"]
 
 
@@ -8,14 +10,14 @@ class Player:
     VERSION = "Rampage bot"
 
     def betRequest(self, game_state):
-        print("Python version:", sys.version)
-        player = game_state['players'][game_state['in_action']]
-        hole_cards = player['hole_cards']
-        community_cards = game_state['community_cards']
-        bet = player['bet']
-        stack = player['stack']
-        current_buy_in = game_state['current_buy_in']
-        minimum_raise = game_state['minimum_raise']
+        game = GameState(game_state)
+        player = game.our_player
+        hole_cards = player.hole_cards
+        community_cards = game.community_cards
+        bet = player.bet
+        stack = player.stack
+        current_buy_in = game.community_cards
+        minimum_raise = game.minimum_raise
 
         if hole_cards[0]['rank'] == hole_cards[1]['rank']:
             rank = 14 - RANKS[-1::-1].index(hole_cards[0]['rank'])
