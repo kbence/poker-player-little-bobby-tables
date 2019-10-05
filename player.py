@@ -36,7 +36,7 @@ class Player:
         #     print("response:", current_buy_in - bet)
         #     return current_buy_in - bet
 
-        if current_buy_in > 200:
+        if current_buy_in > 350 and bet < 80:
             return 0
 
         print("response:", current_buy_in - bet)
