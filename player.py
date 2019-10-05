@@ -25,12 +25,16 @@ class Player:
             try:
                 score = Preflop(game_state).score()
 
-                if score > 18:
+                if score > 14:
+                    logger.all_in("Chen > 14")
+                    return 4000
+
+                if score > 10:
                     logger.check("Chen said it's fine (raise)")
                     return current_buy_in - bet + minimum_raise
 
                 if score < 8:
-                    logger.all_in("Chen score is low")
+                    logger.fold("Chen score is low")
                     return 0
 
                 logger.check("Chen says we should check")
