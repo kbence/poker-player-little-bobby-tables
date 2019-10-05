@@ -1,5 +1,7 @@
 import json
 
+RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q", "A"]
+
 class Player:
     VERSION = "Much better all in bot"
 
@@ -13,9 +15,13 @@ class Player:
         minimum_raise = game_state['minimum_raise']
 
         if hole_cards[0]['rank'] == hole_cards[1]['rank']:
-            print("ALL IN: ", json.dumps(hole_cards))
+            rank = 14 - RANKS[-1::-1].index(hole_cards[0]['rank'])
             # Pair
-            return 1000
+            if rank > 7:
+                print("ALL IN:", json.dumps(hole_cards))
+                return 1000
+            else:
+                print("Don't go ALL IN:", json.dumps(hole_cards))
 
         if current_buy_in > 200:
             return 0
