@@ -18,7 +18,7 @@ class Player:
 
         player = game_state['players'][game_state['in_action']]
         hole_cards = player['hole_cards']
-        # community_cards = game_state['community_cards']
+        community_cards = game_state['community_cards']
         bet = player['bet']
         stack = player['stack']
         current_buy_in = game_state['current_buy_in']

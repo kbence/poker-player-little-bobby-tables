@@ -22,5 +22,6 @@ class PlayerTest(unittest.TestCase):
                     stack=1,
                 )
             ],
+            community_cards=[],
         ))
 
