@@ -3,7 +3,7 @@ from preflop import Preflop, card_rank
 
 
 def mock_card(card):
-    return {'rank': card[0:-1], 'suit': card[-2:-1]}
+    return {'rank': card[0:-1], 'suit': card[-1:]}
 
 def mock_hole_cards(cards):
     return [mock_card(card) for card in cards]
@@ -88,6 +88,9 @@ class I_can_has_unittest(unittest.TestCase):
 
     def test_score_5_4(self):
         self.assertEqual(2.5, Preflop(self.mock_hole(["5D", "4H"])).score())
+
+    def test_score_5_4_same_suit(self):
+        self.assertEqual(4.5, Preflop(self.mock_hole(["5D", "4D"])).score())
 
     def test_score_pair_5(self):
         self.assertEqual(5, Preflop(self.mock_hole(["5D", "5H"])).score())

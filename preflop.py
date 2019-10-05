@@ -46,5 +46,8 @@ class Preflop:
         r = card_rank(self.high_card())
         return self.high_card_values[r]
 
+    def is_same_suit(self):
+        return self.hole_cards[0]['suit']==self.hole_cards[1]['suit']
+
     def score(self):
-        return self.high_card_value() * (2 if self.is_pair() else 1)
+        return self.high_card_value() * (2 if self.is_pair() else 1) + (2 if self.is_same_suit() else 0)
