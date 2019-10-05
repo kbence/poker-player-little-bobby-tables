@@ -87,10 +87,10 @@ class I_can_has_unittest(unittest.TestCase):
     #############################
 
     def test_score_5_4(self):
-        self.assertEqual(1.5, Preflop(self.mock_hole(["5D", "4H"])).score())
+        self.assertEqual(2, Preflop(self.mock_hole(["5D", "4H"])).score())
 
     def test_score_5_4_same_suit(self):
-        self.assertEqual(3.5, Preflop(self.mock_hole(["5D", "4D"])).score())
+        self.assertEqual(4, Preflop(self.mock_hole(["5D", "4D"])).score())
 
     def test_score_pair_5(self):
         self.assertEqual(5, Preflop(self.mock_hole(["5D", "5H"])).score())

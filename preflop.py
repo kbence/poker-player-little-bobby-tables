@@ -1,4 +1,5 @@
 import sys
+from math import ceil
 
 from game import RANKS
 
@@ -49,5 +50,12 @@ class Preflop:
     def is_same_suit(self):
         return self.hole_cards[0]['suit']==self.hole_cards[1]['suit']
 
+    def rank_diff_score_correction(self):
+        c1=self.hole_cards[0]
+        cr1= card_rank(c1)
+        c2 = self.hole_cards[1]
+        cr2=card_rank(c2)
+        return min(5,abs(cr2-cr1))
+
     def score(self):
-        return self.high_card_value() * (2 if self.is_pair() else 1) + (2 if self.is_same_suit() else 0)
+        return ceil(self.high_card_value() * (2 if self.is_pair() else 1) + (2 if self.is_same_suit() else 0) - self.rank_diff_score_correction())
