@@ -47,7 +47,7 @@ class Player:
                 return 1000
 
         if hole_cards[0].rank_value > 9 or hole_cards[1].rank_value > 9:
-            if current_buy_in > 500 and bet < 200:
+            if current_buy_in > 400 and bet < 200:
                 logger.fold("high card, high stakes, low money")
                 return 0
 
