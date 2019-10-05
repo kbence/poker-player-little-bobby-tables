@@ -21,12 +21,15 @@ class Player:
         minimum_raise = game.minimum_raise
 
         if hole_cards[0].rank == hole_cards[1].rank:
-            rank = 14 - RANKS[-1::-1].index(hole_cards[0].rank)
-            if rank > 7:
+            if hole_cards[0].rank_value > 7:
                 logger.all_in("high cards")
                 return 1000
 
         if hole_cards[0].rank_value > 9 or hole_cards[1].rank_value > 9:
+            if current_buy_in > 500 and bet < 200:
+                logger.fold("high card, high stakes, low money")
+                return 0
+
             logger.check("at least one high card")
             return current_buy_in - bet
 

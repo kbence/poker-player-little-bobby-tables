@@ -51,10 +51,20 @@ class PlayerTest(unittest.TestCase):
         self.assertIsInstance(result, int)
         self.assertEqual(result, 0)
 
-    def test_goes_all_in_for_higg_pair(self):
+    def test_goes_all_in_for_high_pair(self):
         result = self.player.betRequest(self.create_game_state(
             hole_cards=[dict(rank='A', suit='hearts'), dict(rank='A', suit='diamonds')]
         ))
 
         self.assertIsInstance(result, int)
         self.assertEqual(result, 1000)
+
+    def test_fold_with_high_cards_and_high_stakes(self):
+        result = self.player.betRequest(self.create_game_state(
+            hole_cards=[dict(rank='A', suit='hearts'), dict(rank='K', suit='diamonds')],
+            current_buy_in=600,
+            bet=50,
+        ))
+
+        self.assertIsInstance(result, int)
+        self.assertEqual(result, 0)
