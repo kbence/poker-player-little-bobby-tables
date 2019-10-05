@@ -34,3 +34,7 @@ class I_can_has_unittest(unittest.TestCase):
     def test_name_high_A(self):
         x=Preflop(self.mock_hole(["AD", "KD"]))
         self.assertEqual(x.name(), "High card A, low card K")
+
+    def test_name_high_A_rev(self):
+        x=Preflop(self.mock_hole(["KD", "AD"]))
+        self.assertEqual("High card A, low card K", x.name())
