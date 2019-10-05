@@ -1,11 +1,14 @@
 import json
 
+import sys
+
 RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q", "A"]
 
 class Player:
     VERSION = "Much better all in bot"
 
     def betRequest(self, game_state):
+        print("Python version:", sys.version)
         player = game_state['players'][game_state['in_action']]
         hole_cards = player['hole_cards']
         community_cards = game_state['community_cards']
