@@ -45,6 +45,10 @@ class GameState:
         self._game_state = game_state
 
     @property
+    def game_id(self):
+        return self._game_state['game_id']
+
+    @property
     def current_buy_in(self):
         return self._game_state['current_buy_in']
 

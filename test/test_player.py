@@ -17,6 +17,7 @@ class PlayerTest(unittest.TestCase):
                 del kwargs[field]
 
         game_state = dict(
+            game_id='82374628375618542385',
             current_buy_in=250,
             minimum_raise=10,
             in_action=0,
