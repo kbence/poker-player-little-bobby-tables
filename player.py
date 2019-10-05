@@ -33,7 +33,7 @@ class Player:
                     logger.check("Chen said it's fine (raise)")
                     return current_buy_in - bet + minimum_raise
 
-                if score < 8:
+                if score < 6:
                     logger.fold("Chen score is low")
                     return 0
 
