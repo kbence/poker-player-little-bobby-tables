@@ -87,10 +87,16 @@ class I_can_has_unittest(unittest.TestCase):
     #############################
 
     def test_score_5_4(self):
-        self.assertEqual(2.5, Preflop(self.mock_hole(["5D", "4H"])).score())
+        self.assertEqual(1.5, Preflop(self.mock_hole(["5D", "4H"])).score())
 
     def test_score_5_4_same_suit(self):
-        self.assertEqual(4.5, Preflop(self.mock_hole(["5D", "4D"])).score())
+        self.assertEqual(3.5, Preflop(self.mock_hole(["5D", "4D"])).score())
 
     def test_score_pair_5(self):
         self.assertEqual(5, Preflop(self.mock_hole(["5D", "5H"])).score())
+
+    def test_gap_max(self):
+        self.assertEqual(0, Preflop(self.mock_hole(["10D", "2H"])).score())
+
+    def test_gap_gt_max(self):
+        self.assertEqual(0, Preflop(self.mock_hole(["10D", "5H"])).score())
